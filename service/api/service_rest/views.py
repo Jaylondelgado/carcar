@@ -30,8 +30,6 @@ class AppointmentEncoder(ModelEncoder):
         'technician',
     ]
     encoders = {
-        'date': DateEncoder(),
-        'time': DateEncoder(),
         'technician': TechnicianEncoder(),
     }
 
