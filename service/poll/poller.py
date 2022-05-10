@@ -34,7 +34,6 @@ def poll():
             response = requests.get("http://inventory-api:8000/api/automobiles")
             content = json.loads(response.content)
             for auto in content["autos"]:
-                print(auto.vin)
                 AutomobileVO.objects.update_or_create(
                     import_href=auto['href'],
                     defaults={
@@ -44,7 +43,7 @@ def poll():
             # Write your polling logic, here
         except Exception as e:
             print(e, file=sys.stderr)
-        time.sleep(10)
+        time.sleep(60)
 
 
 if __name__ == "__main__":

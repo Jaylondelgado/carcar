@@ -29,8 +29,8 @@ class Appointment(models.Model):
         related_name='technician',
         on_delete=models.CASCADE,
     )
-    automobile = models.ForeignKey(
-        AutomobileVO,
-        related_name='automobile',
-        on_delete=models.CASCADE,
-    )
+    # automobile = models.ForeignKey(
+    #     AutomobileVO,
+    #     related_name='automobile',
+    #     on_delete=models.CASCADE,
+    # )
