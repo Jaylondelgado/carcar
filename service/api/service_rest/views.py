@@ -113,8 +113,16 @@ def api_appointments(request):
         content = json.loads(request.body)
         technician = Technician.objects.get(id=content["technician"])
         content["technician"] = technician
+        try:
+            import_vin = AutomobileVO.objects.get(import_vin=content['vin'])
+            content["vin"] = import_vin
+            content["vip"] = True
+        except AutomobileVO.DoesNotExist:
+            return JsonResponse(
+                {"message": "Invalid automobile"},
+                status=400,
+            )
         appointment = Appointment.objects.create(**content)
-        print(appointment)
         return JsonResponse(
             {"appointment" : appointment},
             encoder=AppointmentEncoder,
