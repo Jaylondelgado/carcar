@@ -44,8 +44,8 @@ class SaleDetailEncoder(ModelEncoder):
     ]
     encoders = {
         "automobile": AutomobileVOEncoder(),
-        "sales_persos": SalesPersonListEncoder,
-        "customer": PotentialCustomerListEncoder,
+        "sales_person": SalesPersonListEncoder(),
+        "customer": PotentialCustomerListEncoder(),
     }
 
 @require_http_methods(["GET", "POST"])
@@ -94,6 +94,12 @@ def api_list_sales(request):
             encoder = SaleDetailEncoder,
             safe=False
         )
+
+@require_http_methods(["DELETE", "GET", "PUT"])
+def api_show_sales(request, pk):
+    if request.method == "GET":
+        sale = Sale.objects.get(id=pk)
+        
     
 
 
