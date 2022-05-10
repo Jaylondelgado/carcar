@@ -3,7 +3,9 @@
 Team:
 
 * Person 1 - Which microservice?
+Jaylon Delgado microservice - service
 * Person 2 - Which microservice?
+Jarett Tan microservice - sales
 
 ## Design
 
