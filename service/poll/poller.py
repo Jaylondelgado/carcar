@@ -13,19 +13,19 @@ django.setup()
 from service_rest.models import AutomobileVO
 # from service_rest.models import Something
 
-def get_automobile():
-    response = requests.get("http://inventory-api:8000/api/automobiles")
-    content = json.loads(response.content)
-    for automobile in content["autos"]:
-        print(automobile)
-        AutomobileVO.objects.update_or_create(
-            # import_href=automobile['href'],
-            defaults={
-                'import_href': automobile["href"],
-                'import_vin': automobile["vin"],
-            },
-        )
-        print('check if this works')
+# def get_automobile():
+#     response = requests.get("http://inventory-api:8000/api/automobiles")
+#     content = json.loads(response.content)
+#     for automobile in content["autos"]:
+#         print(automobile)
+#         AutomobileVO.objects.update_or_create(
+#             # import_href=automobile['href'],
+#             defaults={
+#                 'import_href': automobile["href"],
+#                 'import_vin': automobile["vin"],
+#             },
+#         )
+#         print('check if this works')
 
 def poll():
     while True:
@@ -33,19 +33,18 @@ def poll():
         try:
             response = requests.get("http://inventory-api:8000/api/automobiles")
             content = json.loads(response.content)
-            for automobile in content["autos"]:
-                print(automobile)
+            for auto in content["autos"]:
+                print(auto.vin)
                 AutomobileVO.objects.update_or_create(
-            # import_href=automobile['href'],
+                    import_href=auto['href'],
                     defaults={
-                        'import_href': automobile["href"],
-                        'import_vin': automobile["vin"],
-                    },
+                        "vin":auto["import_vin"],
+                    }
                 )
             # Write your polling logic, here
         except Exception as e:
             print(e, file=sys.stderr)
-        time.sleep(60)
+        time.sleep(10)
 
 
 if __name__ == "__main__":

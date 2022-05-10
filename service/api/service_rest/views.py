@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Technician, Appointment, AutomobileVO
 from django.views.decorators.http import require_http_methods
-from common.json import ModelEncoder
+from common.json import ModelEncoder, DateEncoder
 from django.http import JsonResponse
 import json
 # Create your views here.
@@ -24,12 +24,14 @@ class AppointmentEncoder(ModelEncoder):
     properties = [
         'vin',
         'name',
-        'date',
         'reason',
+        "vip",
         'technician',
         'automobile',
     ]
     encoders = {
+        'date': DateEncoder(),
+        'time': DateEncoder(),
         'technician': TechnicianEncoder(),
         'automobile': AutomobileEncoder(),
     }
@@ -114,16 +116,15 @@ def api_appointments(request):
         technician = Technician.objects.get(id=content["technician"])
         content["technician"] = technician
         try:
+            print(content)
             import_vin = AutomobileVO.objects.get(import_vin=content['vin'])
-            content["vin"] = import_vin
             content["vip"] = True
         except AutomobileVO.DoesNotExist:
-            return JsonResponse(
-                {"message": "Invalid automobile"},
-                status=400,
-            )
+            content["is_vip"] = False
         appointment = Appointment.objects.create(**content)
         return JsonResponse(
             {"appointment" : appointment},
             encoder=AppointmentEncoder,
         )
+
+# @require_http_methods(["DELETE", "GET", "PUT"])
