@@ -21,6 +21,7 @@ class Appointment(models.Model):
     vin = models.CharField(max_length=100)
     name = models.CharField(max_length=50)
     vip = models.BooleanField(default=False)
+    finished = models.BooleanField(default=False)
     date = models.DateField(null=True)
     time = models.TimeField(null=True)
     reason = models.CharField(max_length=200)
@@ -29,8 +30,8 @@ class Appointment(models.Model):
         related_name='technician',
         on_delete=models.CASCADE,
     )
-    automobile = models.ForeignKey(
-        AutomobileVO,
-        related_name='automobile',
-        on_delete=models.CASCADE,
-    )
+    # automobile = models.ForeignKey(
+    #     AutomobileVO,
+    #     related_name='automobile',
+    #     on_delete=models.CASCADE,
+    # )
