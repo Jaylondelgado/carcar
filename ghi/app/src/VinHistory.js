@@ -5,10 +5,9 @@ function VinHistory({ appointments }) {
     const [filteredAppointments, setfilteredAppointments] = useState([]);
     const filteredAppointmentsData = appointments.filter(appointment => appointment.finished === true)
     const handleClick = () => {
-      const filtered = filteredAppointmentsData.filter(appointment => appointment.vin == search)
+      const filtered = filteredAppointmentsData.filter(appointment => appointment.vin === search)
       setfilteredAppointments(filtered);
     }      
-    console.log("here we go", filteredAppointments)
     
     return (
       <>
