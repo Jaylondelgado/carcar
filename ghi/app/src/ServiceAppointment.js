@@ -1,6 +1,7 @@
 import React from "react";
 
 function AppointmentList({ appointments }) {
+  // const filteredAppts
     const deleteItem = async (id) => {
       fetch(`http://localhost:8080/api/appointments/${id}`,{
         method: 'DELETE',
@@ -10,6 +11,19 @@ function AppointmentList({ appointments }) {
         window.location.reload();
       })
     }
+    const finishAppt = async (id) => {
+      await fetch(`http://localhost:8080/api/appointments/${id}/`,{
+          method: 'PUT',
+          body: JSON.stringify({finished: true}),
+          headers: {'Content-Type': 'application/json'},
+      }).then(() =>{
+          window.location.reload();
+      })
+  }
+  const handleSubmit = (id) => {
+    finishAppt(id);
+  };
+
   
       return(
       <table className="table table-striped table-hover">
@@ -26,8 +40,12 @@ function AppointmentList({ appointments }) {
         </thead>
         <tbody>
           {appointments.map(appointment => {
+            let finishedClass = ''
+            if (appointment.finished == true) {
+              finishedClass = 'd-none'
+            }
             return (
-              <tr key={appointment.id}>
+              <tr className={finishedClass} key={appointment.id}>
                 <td>{ appointment.vin }</td>
                 <td>{ appointment.name }</td>
                 <td>{ appointment.date }</td>
@@ -40,7 +58,7 @@ function AppointmentList({ appointments }) {
                 {!appointment.vip && (
                   <td>False</td>
                 )}
-                <td><button onClick={() => deleteItem(appointment.id)}>Cancel</button></td>
+                <td><button onClick={() => deleteItem(appointment.id)}>Cancel</button><button className="btn btn-success" onClick={() => handleSubmit(appointment.id)}>Finished</button></td>
               </tr>
             );
           })}

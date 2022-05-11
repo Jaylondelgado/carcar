@@ -5,7 +5,7 @@ import Nav from './Nav';
 import ServiceAppointment from './ServiceAppointment.js';
 import AppointmentForm from './AppointmentForm.js';
 import TechnicianForm from './TechnicianForm.js';
-import ServiceHistory from './ServiceHistory.js';
+import VinHistory from './VinHistory.js';
 
 function App() {
   const [currentAppointments, setCurrentAppointments] = useState([]);
@@ -37,7 +37,7 @@ function App() {
           <Route path="services">
             <Route index element={<ServiceAppointment appointments={currentAppointments} />}/>
             <Route path="create/" element={<AppointmentForm appointments={currentAppointments} technicians={currentTechnicians} />} />
-            <Route path="history" element={<ServiceHistory />}/>
+            <Route path="history" element={<VinHistory appointments={currentAppointments} />}/>
           </Route>
           <Route path="technicians">
             <Route index element={<TechnicianForm technicians={currentTechnicians} />} />

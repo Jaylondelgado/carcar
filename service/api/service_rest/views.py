@@ -10,6 +10,7 @@ class TechnicianEncoder(ModelEncoder):
     properties = [
         'name',
         'employee_number',
+        'id',
     ]
 
 class AppointmentEncoder(ModelEncoder):
@@ -22,6 +23,7 @@ class AppointmentEncoder(ModelEncoder):
         'date',
         'time',
         "vip",
+        "finished",
         'technician',
     ]
     encoders = {
@@ -145,14 +147,15 @@ def api_appointment(request, pk):
             return response
     else:
         content = json.loads(request.body)
-        technician = Technician.objects.get(id=content["technician"])
-        content["technician"] = technician
         try:
-            import_vin = AutomobileVO.objects.get(import_vin=content['vin'])
-            content["vip"] = True
-        except AutomobileVO.DoesNotExist:
-            content["vip"] = False
-        appointment = Appointment.objects.filter(id=pk).update(**content)
+            if "technician" in content:
+                technician = Technician.objects.get(id=content["technician"])
+                content["technician"] = technician
+        except Technician.DoesNotExist:
+            return JsonResponse(
+                {"message": "Technician doesn't exist"}
+            )
+        Appointment.objects.filter(id=pk).update(**content)
         appointment = Appointment.objects.get(id=pk)
         return JsonResponse(
             {"appointment" : appointment},
