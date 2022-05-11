@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 function AppointmentForm({ technicians }) {
     const [customerName, setCustomerName] = useState('');
-    const [vip, setVip] = useState(false);
     const [vin, setVin] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
@@ -13,7 +12,6 @@ function AppointmentForm({ technicians }) {
         event.preventDefault();
         const data = {
             name: customerName,
-            vip: vip,
             vin: vin,
             date: date,
             time: time,
