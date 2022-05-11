@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function AppointmentForm({ appointments, technicians }) {
+function AppointmentForm() {
     const [name, setName] = useState('');
     const [employeeNumber, setEmployeeNumber] = useState('');
 
@@ -36,7 +36,7 @@ function AppointmentForm({ appointments, technicians }) {
         <div className="row">
         <div className="offset-3 col-6">
         <div className="shadow p-4 mt-4">
-            <h1>Create a new appointment</h1>
+            <h1>Create a new Technician</h1>
             <form onSubmit={handleSubmit} id="create-appointment-form">
             <div className="form-floating mb-3">
                 <input onChange={handleNameChange} value={name} placeholder="Customer Name" required name="customer_name" id="name" className="form-control" />

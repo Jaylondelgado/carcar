@@ -2,19 +2,19 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import Nav from './Nav';
-import SalesList from './SalesList.js';
-import SaleForm from './SalesForm.js';
-import SalesHistory from './SalesHistory.js';
-import ServiceAppointment from './ServiceAppointment.js';
-import AppointmentForm from './AppointmentForm.js';
-import TechnicianForm from './TechnicianForm.js';
-import VinHistory from './VinHistory.js';
-import ManufacturerList from './ManufacturerList';
-import ManufacturerForm from './ManufacturerForm';
-import VehicleModels from './VehicleModels';
-import VehicleModelForm from './VehicleModelForm';
-import SalesPersonForm from './SalesPersonForm';
-import CustomerForm from './CustomerForm';
+import SalesList from './sales/SalesList.js';
+import SaleForm from './sales/SalesForm.js';
+import SalesHistory from './sales/SalesHistory.js';
+import ServiceAppointment from './service/ServiceAppointment.js';
+import AppointmentForm from './service/AppointmentForm.js';
+import TechnicianForm from './service/TechnicianForm.js';
+import VinHistory from './service/VinHistory.js';
+import ManufacturerList from './inventory/ManufacturerList';
+import ManufacturerForm from './inventory/ManufacturerForm';
+import VehicleModels from './inventory/VehicleModels';
+import VehicleModelForm from './inventory/VehicleModelForm';
+import SalesPersonForm from './sales/SalesPersonForm';
+import CustomerForm from './sales/CustomerForm';
 
 
 function App() {

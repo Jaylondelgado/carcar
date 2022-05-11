@@ -1,50 +1,5 @@
 import React from 'react';
 
-
-// function SalesHistory({ sales }) {
-//     const [search, setSearch] = useState("");
-//     const [filteredSales, setfilteredSales] = useState([]);
-//     const handleClick = () => {
-//       const filtered = sales.filter(sale => sale.sales_person.name == search)
-//       console.log("YOLO", filtered)
-//       setfilteredSales(filtered);
-//     }      
-
-    
-//     return (
-//       <>
-//         <div>
-//             <input type="text" placeholder='Search Sales' onChange={event => setSearch(event.target.value)} />
-//             <span><button onClick={handleClick} type="submit">Search</button></span>
-//         </div>
-//         <table className="table table-striped table-hover">
-//           <thead>
-//             <tr>
-//               <th>Sales_person</th>
-//               <th>Customer Name</th>
-//               <th>VIN</th>
-//               <th>Sales price</th>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {filteredSales.map(sale => {
-//               return (
-//                 <tr key={sale.id}>
-//                   <td>{ sale.sales_person.name }</td>
-//                   <td>{ sale.cusomer.name }</td>
-//                   <td>{ sale.automobile.vin }</td>
-//                   <td>{ sale.sales_price }</td>
-//                 </tr>
-//               );
-//             })}
-//           </tbody>
-//         </table>
-//       </>
-//     );
-//   }
-  
-// export default SalesHistory;
-
 class SalesHistory extends React.Component {
   constructor(props) {
     super(props);

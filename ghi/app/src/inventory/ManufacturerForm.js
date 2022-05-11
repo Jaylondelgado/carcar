@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function ManufacturerForm({ manufacturers }) {
+function ManufacturerForm() {
     const [name, setName] = useState('');
 
     const handleSubmit = async (event) => {

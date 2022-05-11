@@ -4,7 +4,7 @@ from django.views.decorators.http import require_http_methods
 from common.json import ModelEncoder, DateEncoder
 from django.http import JsonResponse
 import json
-# Create your views here.
+
 class TechnicianEncoder(ModelEncoder):
     model = Technician
     properties = [
