@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 
-
-function SalesPersonForm() {
+function CustomerForm() {
     const [name, setName] = useState('');
-    const [employeeNumber, setEmployeeNumber] = useState('');
+    const [address, setAddress] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {
             name: name,
-            employee_number: employeeNumber,
+            address: address,
+            phone_number: phoneNumber
         }
-        const url = 'http://localhost:8090/api/sales_persons/';
+        const url = 'http://localhost:8090/api/customers/';
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),
@@ -22,30 +23,38 @@ function SalesPersonForm() {
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
             setName('');
-            setEmployeeNumber('');
+            setAddress('');
+            setPhoneNumber('');
         }
     }
 
     const handleNameChange = (event) => {
         setName(event.target.value)
     }
-    const handleEmployeeNumberChange = (event) => {
-        setEmployeeNumber(event.target.value)
+    const handleAddressChange = (event) => {
+        setAddress(event.target.value)
+    }
+    const handlePhoneNumberChange = (event) => {
+        setPhoneNumber(event.target.value)
     }
 
     return (
         <div className="row">
         <div className="offset-3 col-6">
         <div className="shadow p-4 mt-4">
-            <h1>Create a new Sales Person</h1>
-            <form onSubmit={handleSubmit} id="create-appointment-form">
+            <h1>Create a new Customer</h1>
+            <form onSubmit={handleSubmit} id="create-customer-form">
             <div className="form-floating mb-3">
                 <input onChange={handleNameChange} value={name} placeholder="Customer Name" required name="customer_name" id="name" className="form-control" />
                 <label htmlFor="customer_name">Name</label>
             </div>
             <div className="form-floating mb-3">
-                <input onChange={handleEmployeeNumberChange} value={employeeNumber} placeholder="Employee Number" required name="employee_number" id="employee_number" className="form-control" />
-                <label htmlFor="vin">Employee Number</label>
+                <input onChange={handleAddressChange} value={address} placeholder="Address" required name="address" id="address" className="form-control" />
+                <label htmlFor="vin">Address</label>
+            </div>
+            <div className="form-floating mb-3">
+                <input onChange={handlePhoneNumberChange} value={phoneNumber} placeholder="Phone number" required name="phone_number" id="phone_number" className="form-control" />
+                <label htmlFor="vin">Address</label>
             </div>
             <button className="btn btn-primary">Create</button>
             </form>
@@ -55,4 +64,4 @@ function SalesPersonForm() {
 )
 }
 
-export default SalesPersonForm
+export default CustomerForm
