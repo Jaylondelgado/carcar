@@ -21,10 +21,12 @@ function AppointmentList({ appointments }) {
             <th>Time</th>
             <th>Technician</th>
             <th>Reason</th>
+            <th>VIP</th>
           </tr>
         </thead>
         <tbody>
           {appointments.map(appointment => {
+            console.log("here", appointment)
             return (
               <tr key={appointment.id}>
                 <td>{ appointment.vin }</td>
@@ -33,6 +35,12 @@ function AppointmentList({ appointments }) {
                 <td>{ appointment.time }</td>
                 <td>{ appointment.technician.name }</td>
                 <td>{ appointment.reason }</td>
+                {appointment.vip && (
+                  <td>True</td>
+                )}
+                {!appointment.vip && (
+                  <td>False</td>
+                )}
                 <td><button onClick={() => deleteItem(appointment.id)}>Cancel</button></td>
               </tr>
             );

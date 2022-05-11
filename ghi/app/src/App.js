@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 import MainPage from './MainPage';
 import Nav from './Nav';
 import ServiceAppointment from './ServiceAppointment.js';
-// import AppointmentForm from './AppointmentForm.js';
+import AppointmentForm from './AppointmentForm.js';
+import TechnicianForm from './TechnicianForm.js';
+import ServiceHistory from './ServiceHistory.js';
 
 function App() {
   const [currentAppointments, setCurrentAppointments] = useState([]);
@@ -13,14 +15,13 @@ function App() {
       const fetchAppointmentData = async () => {
           const responseAppointment = await fetch('http://localhost:8080/api/appointments/');
           const appointmentData = await responseAppointment.json();
-          console.log(appointmentData);
           setCurrentAppointments(appointmentData.appointments);
       }
 
       const fetchTechnicianData = async () => {
         const responseTechnician = await fetch('http://localhost:8080/api/technicians/');
         const technicianData = await responseTechnician.json();
-        setCurrentTechnicians(technicianData.technicians)
+        setCurrentTechnicians(technicianData.techs)
       }
 
       fetchAppointmentData()
@@ -34,7 +35,12 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="services">
-            <Route index element={<ServiceAppointment appointments={currentAppointments} technicians={currentTechnicians} />}/>
+            <Route index element={<ServiceAppointment appointments={currentAppointments} />}/>
+            <Route path="create/" element={<AppointmentForm appointments={currentAppointments} technicians={currentTechnicians} />} />
+            <Route path="history" element={<ServiceHistory appointments={currentAppointments} />}/>
+          </Route>
+          <Route path="technicians">
+            <Route index element={<TechnicianForm technicians={currentTechnicians} />} />
           </Route>
         </Routes>
       </div>

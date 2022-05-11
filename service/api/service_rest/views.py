@@ -12,13 +12,6 @@ class TechnicianEncoder(ModelEncoder):
         'employee_number',
     ]
 
-class AutomobileEncoder(ModelEncoder):
-    model = AutomobileVO
-    properties = [
-        'import_href',
-        'import_vin',
-    ]
-
 class AppointmentEncoder(ModelEncoder):
     model = Appointment
     properties = [
@@ -26,6 +19,8 @@ class AppointmentEncoder(ModelEncoder):
         'name',
         'reason',
         "id",
+        'date',
+        'time',
         "vip",
         'technician',
     ]
@@ -110,8 +105,9 @@ def api_appointments(request):
         )
     else:
         content = json.loads(request.body)
-        technician = Technician.objects.get(id=content["technician"])
+        technician = Technician.objects.get(employee_number=content["technician"])
         content["technician"] = technician
+        print("content!!", content)
         try:
             import_vin = AutomobileVO.objects.get(import_vin=content['vin'])
             content["vip"] = True
