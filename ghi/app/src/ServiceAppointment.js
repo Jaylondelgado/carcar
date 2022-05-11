@@ -12,7 +12,7 @@ function AppointmentList({ appointments }) {
     }
   
       return(
-      <table className="table table-striped">
+      <table className="table table-striped table-hover">
         <thead>
           <tr>
             <th>VIN</th>
@@ -26,7 +26,6 @@ function AppointmentList({ appointments }) {
         </thead>
         <tbody>
           {appointments.map(appointment => {
-            console.log("here", appointment)
             return (
               <tr key={appointment.id}>
                 <td>{ appointment.vin }</td>

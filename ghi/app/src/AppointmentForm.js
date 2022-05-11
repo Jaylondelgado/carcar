@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 function AppointmentForm({ technicians }) {
-    console.log("here we goooo", technicians)
     const [customerName, setCustomerName] = useState('');
     const [vip, setVip] = useState(false);
     const [vin, setVin] = useState('');
@@ -32,7 +31,6 @@ function AppointmentForm({ technicians }) {
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
             setCustomerName('');
-            setVip('');
             setVin('');
             setDate('');
             setTime('');
@@ -45,9 +43,6 @@ function AppointmentForm({ technicians }) {
         setCustomerName(event.target.value)
     }
     const handleVinChange = (event) => {
-        setVin(event.target.value)
-    }
-    const handleVipChange = (event) => {
         setVin(event.target.value)
     }
     const handleDateChange = (event) => {
@@ -78,16 +73,12 @@ function AppointmentForm({ technicians }) {
                 <label htmlFor="vin">Vin Number</label>
             </div>
             <div className="form-floating mb-3">
-                <input onChange={handleDateChange} value={date} placeholder="date" required name="date" id="date" className="form-control" />
+                <input onChange={handleDateChange} value={date} type="date" placeholder="date" required name="date" id="date" className="form-control" />
                 <label htmlFor="date">Date</label>
             </div>
             <div className="form-floating mb-3">
-                <input onChange={handleTimeChange} value={time} placeholder="time" required name="time" id="time" className="form-control" />
+                <input onChange={handleTimeChange} value={time} type="time" placeholder="time" required name="time" id="time" className="form-control" />
                 <label htmlFor="time">Time</label>
-            </div>
-            <div className="form-floating mb-3">
-                <input onChange={handleVipChange} value={vip} placeholder="vip" required name="vip" id="vip" className="form-control" />
-                <label htmlFor="vip">VIP</label>
             </div>
             <div className="form-floating mb-3">
                 <select onChange={handleTechnicianChange} value={technician} required id="technician" name="technician" className="form-select">

@@ -107,7 +107,6 @@ def api_appointments(request):
         content = json.loads(request.body)
         technician = Technician.objects.get(employee_number=content["technician"])
         content["technician"] = technician
-        print("content!!", content)
         try:
             import_vin = AutomobileVO.objects.get(import_vin=content['vin'])
             content["vip"] = True
