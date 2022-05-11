@@ -41,7 +41,7 @@ function AppointmentList({ appointments }) {
         <tbody>
           {appointments.map(appointment => {
             let finishedClass = ''
-            if (appointment.finished == true) {
+            if (appointment.finished === true) {
               finishedClass = 'd-none'
             }
             return (
