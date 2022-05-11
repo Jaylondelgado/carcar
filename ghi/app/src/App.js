@@ -63,6 +63,7 @@ function App() {
         const responseManufacturer = await fetch('http://localhost:8100/api/manufacturers/');
         const manufacturerData = await responseManufacturer.json();
         setCurrentManufacturers(manufacturerData.manufacturers)
+        console.log("check this:", manufacturerData)
       }
     
       const fetchVehicleModels = async () => {
@@ -98,7 +99,7 @@ function App() {
           </Route>
           <Route path="models">
             <Route index element={<VehicleModels models={currentVehicleModels} />}/>
-            <Route path="new" element={<VehicleModelForm />}/>
+            <Route path="new" element={<VehicleModelForm manufacturers={currentManufacturers} />}/>
           </Route>
           <Route path="services">
             <Route index element={<ServiceAppointment appointments={currentAppointments} />}/>
