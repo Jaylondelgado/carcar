@@ -83,7 +83,7 @@ function AppointmentForm({ technicians }) {
                         <option value="">Choose a Technician</option>
                         {technicians.map(technician => {
                             return(
-                                <option value={technician.employee_number} key={technician.employee_number}>
+                                <option value={technician.id} key={technician.id}>
                                     {technician.name}
                                 </option>
                             )

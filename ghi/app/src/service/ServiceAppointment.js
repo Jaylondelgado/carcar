@@ -1,7 +1,6 @@
 import React from "react";
 
 function AppointmentList({ appointments }) {
-  // const filteredAppts
     const deleteItem = async (id) => {
       fetch(`http://localhost:8080/api/appointments/${id}`,{
         method: 'DELETE',
