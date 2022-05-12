@@ -1,5 +1,4 @@
 from django.db import models
-from django.forms import BooleanField
 from django.urls import reverse
 # Create your models here.
 
@@ -30,8 +29,3 @@ class Appointment(models.Model):
         related_name='technician',
         on_delete=models.CASCADE,
     )
-    # automobile = models.ForeignKey(
-    #     AutomobileVO,
-    #     related_name='automobile',
-    #     on_delete=models.CASCADE,
-    # )
