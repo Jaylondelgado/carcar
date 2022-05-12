@@ -54,7 +54,7 @@ function CustomerForm() {
             </div>
             <div className="form-floating mb-3">
                 <input onChange={handlePhoneNumberChange} value={phoneNumber} placeholder="Phone number" required name="phone_number" id="phone_number" className="form-control" />
-                <label htmlFor="vin">Address</label>
+                <label htmlFor="vin">Phone number</label>
             </div>
             <button className="btn btn-primary">Create</button>
             </form>

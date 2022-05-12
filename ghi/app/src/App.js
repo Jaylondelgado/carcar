@@ -15,6 +15,8 @@ import VehicleModels from './VehicleModels';
 import VehicleModelForm from './VehicleModelForm';
 import SalesPersonForm from './SalesPersonForm';
 import CustomerForm from './CustomerForm';
+import AutomobileForm from './AutomobileForm';
+import AutomobileList from './AutomobileList';
 
 
 function App() {
@@ -108,6 +110,10 @@ function App() {
           <Route path="models">
             <Route index element={<VehicleModels models={currentVehicleModels} />}/>
             <Route path="new" element={<VehicleModelForm manufacturers={currentManufacturers} />}/>
+          </Route>
+          <Route path="automobiles">
+            <Route index element={<AutomobileList automobiles={currentAutomobile}/>}/>
+            <Route path="create/" element={<AutomobileForm />}/>
           </Route>
           <Route path="services">
             <Route index element={<ServiceAppointment appointments={currentAppointments} />}/>
