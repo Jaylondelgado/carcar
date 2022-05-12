@@ -107,7 +107,7 @@ def api_appointments(request):
         )
     else:
         content = json.loads(request.body)
-        technician = Technician.objects.get(employee_number=content["technician"])
+        technician = Technician.objects.get(id=content["technician"])
         content["technician"] = technician
         try:
             AutomobileVO.objects.get(import_vin=content['vin'])
