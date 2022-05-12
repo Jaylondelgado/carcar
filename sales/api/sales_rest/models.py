@@ -26,7 +26,7 @@ class PotentialCustomer(models.Model):
         return self.name
 
 class Sale(models.Model):
-    automobile = models.ForeignKey(
+    automobile = models.OneToOneField(
         AutomobileVO,
         related_name="automobile",
         on_delete=models.PROTECT

@@ -1,5 +1,6 @@
 from unicodedata import name
 from django.shortcuts import render
+from psycopg2 import IntegrityError
 from common.json import ModelEncoder
 from .models import SalesPerson, PotentialCustomer, AutomobileVO, Sale
 from django.views.decorators.http import require_http_methods
@@ -23,6 +24,7 @@ class PotentialCustomerListEncoder(ModelEncoder):
 class SaleListEncoder(ModelEncoder):
     model = Sale
     properties = [
+        "id",
         "automobile",
         "sales_person",
         "customer",
@@ -86,9 +88,8 @@ def api_list_sales(request):
                 {"message": "Customer does not exist"},
                 status = 400
             )
-
         sale = Sale.objects.create(**content)
-        print(sale)
+        
         return JsonResponse(
             sale,
             encoder = SaleDetailEncoder,
