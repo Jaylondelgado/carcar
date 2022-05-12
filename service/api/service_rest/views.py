@@ -110,7 +110,7 @@ def api_appointments(request):
         technician = Technician.objects.get(id=content["technician"])
         content["technician"] = technician
         try:
-            import_vin = AutomobileVO.objects.get(import_vin=content['vin'])
+            AutomobileVO.objects.get(import_vin=content['vin'])
             content["vip"] = True
         except AutomobileVO.DoesNotExist:
             content["vip"] = False
