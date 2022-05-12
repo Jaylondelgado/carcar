@@ -63,7 +63,7 @@ class SalesHistory extends React.Component {
             {this.state.salesPersons.map(salesPerson => {
               return (
                 <option key={salesPerson.employee_number} value={salesPerson.employee_number}>
-                  {salesPerson.name} - Emp #{salesPerson.employee_number}
+                  {salesPerson.name} - {salesPerson.employee_number}
                 </option>
               )
             })}
