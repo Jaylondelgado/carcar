@@ -10,7 +10,7 @@ function VehicleModelForm({ manufacturers }) {
         const data = {
             name: name,
             picture_url: picture_url,
-            manufacturer: manufacturer,
+            manufacturer_id: manufacturer,
         }
         const url = 'http://localhost:8100/api/models/';
         const fetchConfig = {
@@ -57,7 +57,7 @@ function VehicleModelForm({ manufacturers }) {
                         <option value="">Choose a Manufacturer</option>
                         {manufacturers.map(manufacturer => {
                             return(
-                                <option value={manufacturer.href} key={manufacturer.href}>
+                                <option value={manufacturer.id} key={manufacturer.id}>
                                     {manufacturer.name}
                                 </option>
                             )
