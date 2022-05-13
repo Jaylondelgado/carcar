@@ -19,7 +19,13 @@ That will complete my back end. Next I will start on the front-end by polling fo
 the automobiles for the vin. Then I will begin creating my React files 
 and building my React components to fetch and show the lists and complete 
 the forms. After I will implement the d-none for my finished projects. 
-Then I will work on the search bar for the service history. 
+Then I will work on the search bar for the service history. My two biggest
+struggles were implementing the appointment form on react and also
+creating the search bar with search history. I do however believe 
+I learned a lot throughout this project, I came in not knowing what to do
+with certain errors and I was able to overcome that and began fixing the problem
+realitvely quick. 
+
 
 ## Sales microservice
 
