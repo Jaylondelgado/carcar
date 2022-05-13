@@ -23,5 +23,6 @@ Then I will work on the search bar for the service history.
 
 ## Sales microservice
 
-Explain your models and integration with the inventory
-microservice, here.
+
+
+Sales microservice will record a salesperson vehicle sales with vehicles that are created in the invetory. Sales Microservice has models Sales, SalesPerson, Customer where the Sales model polls for data from invetory microservice to create a Sale that tracks salespersons sales. SalesPerson model creates sales_person instances with fields name, employee_number. Customer models creates potential customer instances with fields name,address,phone_number.Sales models also has a foreign key to customer and salesperson that selects existings salesperson and potential customers to select from with a sold price of a vehicle from invetory. My biggest struggles were implenting the react forms for the create/list view. It was a struggle getting the history list as well as I had to create a dropdown for salesperson instances and displays the sales for the sales person instance. I was able to learn a lot throughout this project with getting a little more comfortable with the front-end side of things. 
